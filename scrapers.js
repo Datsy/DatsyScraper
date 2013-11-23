@@ -54,7 +54,7 @@ var writeNewData = function(data) {
       + "lastcommunicationtime,"
       + "landmark"
       + ") VALUES (" +
-      "'" + row.executionTime + "-08'," + 
+      "'" + row.executionTime + " PST'," + 
       row.id + "," + 
       "'" + row.stationName + "'," + 
       row.availableDocks + "," + 
@@ -71,7 +71,7 @@ var writeNewData = function(data) {
       "'" + row.location + "'," + 
       "'" + row.altitude + "'," + 
       row.testStation + "," + 
-      "'" + row.lastCommunicationTime + "-08'," + 
+      "'" + row.lastCommunicationTime + " PST'," + 
       "'" + row.landMark + "'" +
       ");";
     db.insertNewData(query);
