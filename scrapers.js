@@ -71,7 +71,7 @@ var writeNewData = function(data) {
       "'" + row.location + "'," + 
       "'" + row.altitude + "'," + 
       row.testStation + "," + 
-      "'" + row.lastCommunicationTime + " PST'," + 
+      (row.lastCommunicationTime === null ? "null," : "'" + row.lastCommunicationTime + " PST',") + 
       "'" + row.landMark + "'" +
       ");";
     db.insertNewData(query);
