@@ -32,7 +32,6 @@ var writeNewData = function(data) {
   data = JSON.parse(data);
   for (var i = 0; i < data.stationBeanList.length; i++) {
     var row = data.stationBeanList[i];
-    console.log(row);
     row.executionTime = data.executionTime;
     var query = "INSERT INTO stationstatuses ("
       + "executiontime," 

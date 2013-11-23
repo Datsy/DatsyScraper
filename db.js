@@ -20,7 +20,7 @@ exports.insertNewData = function(queryString) {
     if(err) {
       return console.error('error running query', err);
     } else {
-      console.log('successfully inserted row', result);
+      //console.log('successfully inserted row', result);
     }
   });
 };
