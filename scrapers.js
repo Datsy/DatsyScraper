@@ -54,26 +54,36 @@ var writeNewData = function(data) {
       + "lastcommunicationtime,"
       + "landmark"
       + ") VALUES (" +
-      "'" + row.executionTime + " PST'," + 
-      row.id + "," + 
-      "'" + row.stationName + "'," + 
-      row.availableDocks + "," + 
-      row.totalDocks + "," + 
-      row.latitude + "," + 
-      row.longitude + "," + 
-      "'" + row.statusValue + "'," + 
-      row.statusKey + "," + 
-      row.availableBikes + "," + 
-      "'" + row.stAddress1 + "'," + 
-      "'" + row.stAddress2 + "'," + 
-      "'" + row.city + "'," + 
-      "'" + row.postalCode + "'," +
-      "'" + row.location + "'," + 
-      "'" + row.altitude + "'," + 
-      row.testStation + "," + 
-      (row.lastCommunicationTime === null ? "null," : "'" + row.lastCommunicationTime + " PST',") + 
-      "'" + row.landMark + "'" +
+      nullify(row.executionTime, 'timestamp') + "," +
+      nullify(row.id) + "," +
+      nullify(row.stationName, 'text') + "," +
+      nullify(row.availableDocks) + "," +
+      nullify(row.totalDocks) + "," +
+      nullify(row.latitude) + "," +
+      nullify(row.longitude) + "," +
+      nullify(row.statusValue, 'text') + "," +
+      nullify(row.statusKey) + "," +
+      nullify(row.availableBikes) + "," +
+      nullify(row.stAddress1, 'text') + "," +
+      nullify(row.stAddress2, 'text') + "," +
+      nullify(row.city, 'text') + "," +
+      nullify(row.postalCode) + "," +
+      nullify(row.location, 'text') + "," +
+      nullify(row.altitude, 'text') + "," +
+      nullify(row.testStation) + "," +
+      nullify(row.lastCommunicationTime, 'timestamp') + "," +
+      nullify(row.landMark, 'text') +
       ");";
     db.insertNewData(query);
+  }
+};
+
+var nullify = function(value, type) {
+  if (type === 'timestamp') {
+    return (value === null || value === '' ? "null" : "'" + value + " PST'");
+  } else if (type === 'text') {
+    return (value === null || value === '' ? "null" : "'" + value + "'");
+  } else { 
+    return (value === null || value === '' ? "null" : value);
   }
 };
